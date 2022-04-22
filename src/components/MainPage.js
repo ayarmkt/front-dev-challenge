@@ -41,7 +41,7 @@ const MainPage = () => {
           <form className={classes.searchAction}>
             <input
               type='text'
-              placeholder='Search product'
+              placeholder='Search for products'
               onChange={inputChangeHandler}
               value={input}
             />
