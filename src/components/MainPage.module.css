@@ -1,12 +1,13 @@
 .container {
   display: grid;
   grid-template-columns: 1fr auto;
-  /* grid-template-rows: repeat(2, 1fr); */
   grid-template-rows: 50vh auto;
 }
 
 /* TITLE - BLUE SECTION */
 .title {
+  grid-column: 1;
+  grid-row: 1;
   background-color: var(--blue);
   font-size: var(--textSize-extralarge);
   font-weight: var(--bold);
@@ -19,6 +20,8 @@
 
 /* IMAGE */
 .image {
+  grid-column: 2;
+  grid-row: 1;
   height: 50vh;
 }
 
@@ -27,38 +30,38 @@
 }
 
 /* SEARCH - PINK SECTION */
-
 .search-container {
-  background-color: var(--pink);
   grid-column: span 2;
+  grid-row: 2;
+  background-color: var(--pink);
   display: flex;
   align-items: flex-start;
   justify-content: center;
   min-height: 50vh;
-  /* border: 1px solid white; */
 }
 
 .searchContent {
   width: 50%;
   height: 70%;
   margin: 0 auto;
-  /* height: 50vh; */
   padding-top: 5vh;
-  /* border: 1px solid white; */
 }
 
 .searchAction {
   display: flex;
   justify-content: space-between;
-  /* border: 1px solid white; */
+}
+
+.searchAction input,
+.searchAction button {
+  height: 4vh;
+  min-height: 20px;
 }
 
 .searchAction input {
   background-color: white;
   width: 75%;
-  height: 3vh;
   min-width: 200px;
-  min-height: 20px;
   border: none;
   box-shadow: 3px;
   border-radius: 5px;
@@ -73,9 +76,7 @@
 
 .searchAction button {
   width: 20%;
-  height: 3vh;
   min-width: 50px;
-  min-height: 20px;
   background-color: var(--blue);
   border: none;
   color: black;
@@ -84,9 +85,8 @@
 }
 
 .results {
-  margin-top: 5%;
+  margin: 5% 0;
   font-size: var(--textSize-large);
-  /* border: 1px solid white; */
 }
 
 .results ul {
@@ -99,28 +99,34 @@
 
 @media only screen and (max-width: 820px) {
   .container {
+    height: auto;
     min-height: 100vh;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
   }
 
   .title {
+    grid-column: 1;
     grid-row: 1;
     font-size: var(--textSize-regular);
   }
 
   .image {
+    grid-column: 1;
     grid-row: 2;
     height: auto;
+    width: auto;
   }
 
   .image img {
     height: 100%;
+    width: 100vw;
   }
 
   .search-container {
     grid-row: 3;
-    grid-column: span 1;
+    grid-column: 1;
+    min-height: 0;
   }
 
   .searchAction input {

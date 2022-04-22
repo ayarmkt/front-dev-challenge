@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import beautyImage from '../assets/beauty-products.jpg';
+import { React, useState } from 'react';
 import classes from './MainPage.module.css';
+import beautyImage from '../assets/beauty-products.jpg';
 import { fetchResult } from '../fetch/fetchResult';
 
 const MainPage = () => {
   const [input, setInput] = useState('');
   const [results, setResults] = useState([]);
+  const [searched, setSearched] = useState(false);
 
   const inputChangeHandler = (e) => {
     setInput(e.target.value);
@@ -13,7 +14,8 @@ const MainPage = () => {
 
   const fetchResultHandler = async (e) => {
     e.preventDefault();
-    fetchResult(input, setResults);
+    await fetchResult(input, setResults);
+    if (!searched) setSearched(true);
     setInput('');
   };
 
@@ -48,6 +50,7 @@ const MainPage = () => {
 
           <div className={classes.results}>
             <ul>{resultsList}</ul>
+            {searched && results.length === 0 && <p>No results found</p>}
           </div>
         </div>
       </div>
