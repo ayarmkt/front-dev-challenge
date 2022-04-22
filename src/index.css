@@ -6,6 +6,7 @@
   --textSize-regular: 16px;
   --textSize-small: 14px;
   --textSize-extrasmall: 10px;
+  --bold: 800;
 }
 
 * {

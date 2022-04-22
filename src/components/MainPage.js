@@ -1,7 +1,30 @@
-import beautyImage from '../assets/beauty-products.jpg';
+import { React, useState } from 'react';
 import classes from './MainPage.module.css';
+import beautyImage from '../assets/beauty-products.jpg';
+import { fetchResult } from '../fetch/fetchResult';
 
 const MainPage = () => {
+  const [input, setInput] = useState('');
+  const [results, setResults] = useState([]);
+  const [searched, setSearched] = useState(false);
+
+  const inputChangeHandler = (e) => {
+    setInput(e.target.value);
+  };
+
+  const fetchResultHandler = async (e) => {
+    e.preventDefault();
+    await fetchResult(input, setResults);
+    if (!searched) setSearched(true);
+    setInput('');
+  };
+
+  const resultsList = results.map((result) => (
+    <li className={classes['result-item']} key={result.id}>
+      <span>{result.brand}</span> - {result.name}
+    </li>
+  ));
+
   return (
     <div className={classes.container}>
       <div className={classes.title}>
@@ -13,20 +36,21 @@ const MainPage = () => {
         <img src={beautyImage} alt='Beauty' />
       </div>
 
-      <div className={classes.search}>
+      <div className={classes['search-container']}>
         <div className={classes.searchContent}>
-          <div className={classes.searchAction}>
-            <input type='text' placeholder='Search product' />
-            <button>Search</button>
-          </div>
+          <form className={classes.searchAction}>
+            <input
+              type='text'
+              placeholder='Search for products'
+              onChange={inputChangeHandler}
+              value={input}
+            />
+            <button onClick={fetchResultHandler}>Search</button>
+          </form>
 
           <div className={classes.results}>
-            <ul>
-              <li>Absolution - Day Cream</li>
-              <li>Absolution - Night Cream</li>
-              <li>Dermance - Day Cream</li>
-              <li>Absolution - Day Cream</li>
-            </ul>
+            <ul>{resultsList}</ul>
+            {searched && results.length === 0 && <p>No results found</p>}
           </div>
         </div>
       </div>
