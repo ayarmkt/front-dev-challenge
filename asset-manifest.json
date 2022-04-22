@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/front-dev-challenge/static/css/main.1c3033e1.css",
+    "main.js": "/front-dev-challenge/static/js/main.5b9d6a0e.js",
+    "static/media/beauty-products.jpg": "/front-dev-challenge/static/media/beauty-products.90c5c39ccf148597e132.jpg",
+    "index.html": "/front-dev-challenge/index.html",
+    "main.1c3033e1.css.map": "/front-dev-challenge/static/css/main.1c3033e1.css.map",
+    "main.5b9d6a0e.js.map": "/front-dev-challenge/static/js/main.5b9d6a0e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1c3033e1.css",
+    "static/js/main.5b9d6a0e.js"
+  ]
+}
